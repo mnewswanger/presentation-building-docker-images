@@ -1,0 +1,6 @@
+FROM busybox
+
+RUN echo "echo 'Hello World!'" > /docker-entrypoint.sh \
+    && chmod +x /docker-entrypoint.sh
+
+CMD [ "/bin/sh", "-c", "/docker-entrypoint.sh" ]
