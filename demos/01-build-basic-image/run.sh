@@ -3,7 +3,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Build the basic image
 echo "Building image..."
-docker build -f ${DIR}/dockerfile -t image-demo-01 .
+docker build -f ${DIR}/dockerfile -t image-demo-01 {$DIR}
 echo ""
 read
 

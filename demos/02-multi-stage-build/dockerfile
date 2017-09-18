@@ -1,0 +1,13 @@
+FROM golang:1-alpine AS build-server
+
+RUN apk update
+
+RUN apk add git
+
+RUN go get -v go.mikenewswanger.com/docker-automatic-build
+
+RUN GOOS=linux GOARCH=amd64 go build -v -o /tmp/docker-automatic-build go.mikenewswanger.com/docker-automatic-build
+
+FROM docker
+
+COPY --from=build-server /tmp/docker-automatic-build /usr/local/bin/docker-automatic-build
