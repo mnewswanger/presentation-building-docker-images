@@ -2,7 +2,7 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/"
 
 echo "Listing base images..."
-docker run --rm -ti \
+docker run --rm -t \
     -v ${DIR}/dockerfiles:/tmp/docker-build/dockerfiles \
     -v ${DIR}/deployments:/tmp/docker-build/deployments \
     docker-automatic-build-demo-02 \
@@ -12,7 +12,7 @@ echo "Press ENTER to continue"
 read
 
 echo "Building base images..."
-docker run --rm -ti \
+docker run --rm -t \
     -v ${DIR}/dockerfiles:/tmp/docker-build/dockerfiles \
     -v ${DIR}/deployments:/tmp/docker-build/deployments \
     -v /var/run/docker.sock:/var/run/docker.sock \
@@ -24,7 +24,7 @@ echo "Press ENTER to continue"
 read
 
 echo "Listing deployments..."
-docker run --rm -ti \
+docker run --rm -t \
     -v ${DIR}/dockerfiles:/tmp/docker-build/dockerfiles \
     -v ${DIR}/deployments:/tmp/docker-build/deployments \
     docker-automatic-build-demo-02 \
@@ -34,7 +34,7 @@ echo "Press ENTER to continue"
 read
 
 echo "Building deployment..."
-docker run --rm -ti \
+docker run --rm -t \
     -v ${DIR}/dockerfiles:/tmp/docker-build/dockerfiles \
     -v ${DIR}/deployments:/tmp/docker-build/deployments \
     -v /var/run/docker.sock:/var/run/docker.sock \
@@ -46,7 +46,7 @@ echo "Press ENTER to continue"
 read
 
 echo "Starting Webserver..."
-echo "Serving on localhost:9080"
+echo "Serving on http://localhost:9080"
 echo "Press CTL+C to kill web server"
 docker run --rm -p 9080:80 local/deployments/basic-website
 echo ""

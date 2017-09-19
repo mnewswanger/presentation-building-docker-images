@@ -23,12 +23,12 @@ echo ""
 echo "Inspecting images..."
 # Inspect the images
 echo "Base docker alpine image size:"
-docker run --rm -ti \
+docker run --rm \
     -v /var/run/docker.sock:/var/run/docker.sock \
     docker-inspector-demo-02 \
     /bin/bash -c '/human-readable-file-size.sh "$(docker inspect -f {{.Size}} docker)"'
 echo "Automatic Build Tool image"
-docker run --rm -ti \
+docker run --rm \
     -v /var/run/docker.sock:/var/run/docker.sock \
     docker-inspector-demo-02 \
     /bin/bash -c '/human-readable-file-size.sh "$(docker inspect -f {{.Size}} docker-automatic-build-demo-02)"'
