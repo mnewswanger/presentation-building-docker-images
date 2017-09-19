@@ -1,0 +1,11 @@
+# FROM alpine AS downloader
+
+FROM docker-automatic-build-demo-02
+
+RUN apk update && apk add bash
+
+# COPY --from=downloader /bin/bash /bin/bash
+
+COPY files/human-readable-file-size.sh /
+
+RUN chmod +x /human-readable-file-size.sh
